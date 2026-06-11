@@ -55,7 +55,7 @@ rule-providers:
     private: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}                    # 私有域名
     private-ip: {type: http, interval: 80000, behavior: ipcidr, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"}                   # 私有地址
     proxy-domain: {type: http, interval: 80000, behavior: domain, format: text, url: "https://raw.githubusercontent.com/RiverZJC/Clash-Rules/main/proxy-domain.list"}                        # 代理域名
-    proxy-ip: {type: http, interval: 80000, behavior: ipcidr, format: text, url: "https://raw.githubusercontent.com/RiverZJC/Clash-Rules/main/proxy-ip.list"}                         # 代理地址
+    proxy-ip: {type: http, interval: 80000, behavior: ipcidr, format: text, url: "https://raw.githubusercontent.com/RiverZJC/Clash-Rules/main/proxy-ip.list"}                                # 代理地址
     direct-domain: {type: http, interval: 80000, behavior: domain, format: text, url: "https://raw.githubusercontent.com/RiverZJC/Clash-Rules/main/direct-domain.list"}                      # 直连域名
     reject-domain: {type: http, interval: 80000, behavior: domain, format: text, url: "https://raw.githubusercontent.com/RiverZJC/Clash-Rules/main/reject-domain.list"}                      # 拒绝域名
     cn: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}                              # 国内域名
