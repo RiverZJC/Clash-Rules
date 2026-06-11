@@ -34,7 +34,7 @@ rules:
     - RULE-SET,private,🍀 直连                   # 私有域名
     - RULE-SET,private-ip,🍀 直连,no-resolve     # 私有地址
     - RULE-SET,proxy-domain,🎯 代理              # 代理域名
-    - RULE-SET,proxy-ip,🎯 代理           # 代理地址
+    - RULE-SET,proxy-ip,🎯 代理                  # 代理地址
     - RULE-SET,direct-domain,🍀 直连             # 直连域名
     - RULE-SET,reject-domain,⛔ 拒绝             # 拒绝域名
     - RULE-SET,debian,🍀 直连                    # Debian
