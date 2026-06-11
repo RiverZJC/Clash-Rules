@@ -22,12 +22,12 @@ proxies:
 
 # 代理分组
 proxy-groups:
-    - {name: 🎯 代理, type: select, proxies: [🍀 直连, 🌏 东亚, 🌎️ 北美, 🌍 欧洲]}
+    - {name: 🎯 代理, type: select, proxies: [🍀 直连, 🌏 亚洲, 🌎️ 美洲, 🌍 欧洲]}
     - {name: 🎮 游戏, type: select, proxies: [🍀 直连, 🎯 代理]}
     - {name: 🐟 遗漏, type: select, proxies: [🍀 直连, 🎯 代理]}
-    - {name: 🌏 东亚, type: url-test, interval: 300, tolerance: 50, include-all-providers: true, filter: "(?i)香港|澳门|台湾|新加坡|日本|韩国|Hong Kong|Macao|Taiwan|Singapore|Japan|Korea|🇭🇰|🇲🇴|🇹🇼|🇸🇬|🇯🇵|🇰🇷|狮城|Macau"}
+    - {name: 🌏 东亚, type: url-test, interval: 300, tolerance: 50, include-all-providers: true, filter: "(?i)香港|澳门|台湾|新加坡|日本|韩国|马来西亚|Hong Kong|Macao|Taiwan|Singapore|Japan|Korea|Malaysia|🇭🇰|🇲🇴|🇹🇼|🇸🇬|🇯🇵|🇰🇷|🇲🇾|狮城|大马|Macau"}
     - {name: 🌎️ 北美, type: url-test, interval: 300, tolerance: 50, include-all-providers: true, filter: "(?i)美国|加拿大|United States|Canadian|🇺🇸|🇨🇦|枫国|America"}
-    - {name: 🌍 欧洲, type: url-test, interval: 300, tolerance: 50, include-all-providers: true, filter: "(?i)英国|法国|德国|意大利|俄罗斯|United Kingdom|French|Germany|Italy|Russia|🇬🇧|🇫🇷|🇩🇪|🇮🇹|🇷🇺|意国|俄国"}
+    - {name: 🌍 欧洲, type: url-test, interval: 300, tolerance: 50, include-all-providers: true, filter: "(?i)英国|法国|德国|意大利|俄罗斯|荷兰|United Kingdom|French|Germany|Italy|Russia|Netherlands|🇬🇧|🇫🇷|🇩🇪|🇮🇹|🇷🇺|🇳🇱|意国|俄国"}
 
 # 规则顺序
 rules:
