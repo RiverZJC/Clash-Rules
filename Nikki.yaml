@@ -1,15 +1,35 @@
-# OpenWrt—Nikki—Config—2026.06.11
+# OpenWrt—Nikki—Config—2026.09.02
 # https://github.com/RiverZJC/Clash-Rules
 # https://github.com/MetaCubeX/meta-rules-dat
 
 # 机场订阅
 proxy-providers:
-    XXX:
+    1-XXXX:
         type: http
         proxy: DIRECT
         interval: 80000
-        url: "https://XXX"
-        exclude-filter: "剩余流量|下次重置|套餐到期"
+        url: "https://XXXX"
+        exclude-filter: "剩余流量|套餐到期|下次重置|官网|过滤"
+        health-check:
+            enable: true
+            url: https://www.gstatic.com/generate_204
+            interval: 300
+    2-XXXX:
+        type: http
+        proxy: DIRECT
+        interval: 80000
+        url: "https://XXXX"
+        exclude-filter: "剩余流量|套餐到期|下次重置|官网|过滤"
+        health-check:
+            enable: true
+            url: https://www.gstatic.com/generate_204
+            interval: 300
+    3-XXXX:
+        type: http
+        proxy: DIRECT
+        interval: 80000
+        url: "https://XXXX"
+        exclude-filter: "剩余流量|套餐到期|下次重置|官网|过滤"
         health-check:
             enable: true
             url: https://www.gstatic.com/generate_204
@@ -22,12 +42,16 @@ proxies:
 
 # 代理分组
 proxy-groups:
-    - {name: 🎯 代理, type: select, proxies: [🍀 直连, 🌏 亚洲, 🌎️ 美洲, 🌍 欧洲]}
-    - {name: 🎮 游戏, type: select, proxies: [🍀 直连, 🎯 代理]}
-    - {name: 🐟 遗漏, type: select, proxies: [🍀 直连, 🎯 代理]}
-    - {name: 🌏 亚洲, type: url-test, interval: 300, tolerance: 50, include-all-providers: true, filter: "(?i)香港|澳门|台湾|新加坡|日本|韩国|马来西亚|Hong Kong|Macao|Taiwan|Singapore|Japan|Korea|Malaysia|🇭🇰|🇲🇴|🇹🇼|🇸🇬|🇯🇵|🇰🇷|🇲🇾|狮城|大马|Macau"}
-    - {name: 🌎️ 美洲, type: url-test, interval: 300, tolerance: 50, include-all-providers: true, filter: "(?i)美国|加拿大|United States|Canadian|🇺🇸|🇨🇦|枫国|America"}
-    - {name: 🌍 欧洲, type: url-test, interval: 300, tolerance: 50, include-all-providers: true, filter: "(?i)英国|法国|德国|意大利|俄罗斯|荷兰|United Kingdom|French|Germany|Italy|Russia|Netherlands|🇬🇧|🇫🇷|🇩🇪|🇮🇹|🇷🇺|🇳🇱|意国|俄国"}
+    - {name: 🎯 代理, type: select, proxies: [🍀 直连, 🌏 东亚, 🌏 南亚, 🌎️ 美洲, 🌍 欧洲, 🏆 专线, ♻️ 备用]}
+    - {name: 🎮 游戏, type: select, proxies: [🍀 直连, 🎯 代理, 🏆 专线, ♻️ 备用]}
+    - {name: 🤖 智模, type: select, proxies: [🍀 直连, 🎯 代理, 🏆 专线, ♻️ 备用]}
+    - {name: 🐟 遗漏, type: select, proxies: [🍀 直连, 🎯 代理, 🏆 专线, ♻️ 备用]}
+    - {name: 🌏 东亚, type: url-test, interval: 300, tolerance: 50, use: [1-XXXX], filter: "(?i)日本|韩国|香港|澳门|台湾|Japan|Korea|Hong Kong|Macao|Taiwan|🇯🇵|🇰🇷|🇭🇰|🇲🇴|🇹🇼"}
+    - {name: 🌏 南亚, type: url-test, interval: 300, tolerance: 50, use: [1-XXXX], filter: "(?i)狮城|新加坡|马来西亚|泰国|Singapore|Malaysia|Thailand|🇸🇬|🇲🇾|🇹🇭"}
+    - {name: 🌎️ 美洲, type: url-test, interval: 300, tolerance: 50, use: [1-XXXX], filter: "(?i)美国|加拿大|墨西哥|United States|Canadian|Mexico|🇺🇸|🇨🇦|🇲🇽"}
+    - {name: 🌍 欧洲, type: url-test, interval: 300, tolerance: 50, use: [1-XXXX], filter: "(?i)英国|法国|德国|意大利|俄罗斯|United Kingdom|French|Germany|Italy|Russia|🇬🇧|🇫🇷|🇩🇪|🇮🇹|🇷🇺"}
+    - {name: 🏆 专线, type: url-test, interval: 300, tolerance: 50, use: [2-XXXX]}
+    - {name: ♻️ 备用, type: url-test, interval: 300, tolerance: 50, use: [3-XXXX], filter: "(?i)日本|韩国|香港|澳门|台湾|狮城|新加坡|马来西亚|泰国|Japan|Korea|Hong Kong|Macao|Taiwan|Singapore|Malaysia|Thailand|🇯🇵|🇰🇷|🇭🇰|🇲🇴|🇹🇼|🇸🇬|🇲🇾|🇹🇭"}
 
 # 规则顺序
 rules:
@@ -35,16 +59,17 @@ rules:
     - RULE-SET,private-ip,🍀 直连,no-resolve     # 私有地址
     - RULE-SET,reject-domain,⛔ 拒绝             # 拒绝域名
     - RULE-SET,direct-domain,🍀 直连             # 直连域名
+    - RULE-SET,premium-domain,🏆 专线            # 专线域名
     - RULE-SET,proxy-domain,🎯 代理              # 代理域名
     - RULE-SET,proxy-ip,🎯 代理                  # 代理地址
-    - RULE-SET,category-games,🎮 游戏            # 游戏域名
+    - RULE-SET,category-games,🎮 游戏            # Games
     - RULE-SET,debian,🍀 直连                    # Debian
     - RULE-SET,ubuntu,🍀 直连                    # Ubuntu
     - RULE-SET,fedora,🍀 直连                    # Fedora
     - RULE-SET,archlinux,🍀 直连                 # ArchLinux
-    - RULE-SET,apple@cn,🍀 直连                  # 苹果国内
-    - RULE-SET,samsung@cn,🍀 直连                # 三星国内
-    - RULE-SET,microsoft@cn,🍀 直连              # 微软国内
+    - RULE-SET,apple@cn,🍀 直连                  # Appple-CN
+    - RULE-SET,samsung@cn,🍀 直连                # Samsung-CN
+    - RULE-SET,microsoft@cn,🍀 直连              # Microsoft-CN
     - RULE-SET,geolocation-!cn,🎯 代理           # 国外域名
     - RULE-SET,cn,🍀 直连                        # 国内域名
     - RULE-SET,cn-ip,🍀 直连,no-resolve          # 国内地址
@@ -56,16 +81,17 @@ rule-providers:
     private-ip: {type: http, interval: 80000, behavior: ipcidr, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"}                   # 私有地址
     reject-domain: {type: http, interval: 80000, behavior: domain, format: text, url: "https://raw.githubusercontent.com/RiverZJC/Clash-Rules/main/reject-domain.list"}                      # 拒绝域名
     direct-domain: {type: http, interval: 80000, behavior: domain, format: text, url: "https://raw.githubusercontent.com/RiverZJC/Clash-Rules/main/direct-domain.list"}                      # 直连域名
+    premium-domain: {type: http, interval: 80000, behavior: domain, format: text, url: "https://raw.githubusercontent.com/RiverZJC/Clash-Rules/main/premium-domain.list"}                    # 专线域名
     proxy-domain: {type: http, interval: 80000, behavior: domain, format: text, url: "https://raw.githubusercontent.com/RiverZJC/Clash-Rules/main/proxy-domain.list"}                        # 代理域名
     proxy-ip: {type: http, interval: 80000, behavior: ipcidr, format: text, url: "https://raw.githubusercontent.com/RiverZJC/Clash-Rules/main/proxy-ip.list"}                                # 代理地址
-    category-games: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games.mrs"}      # 游戏域名
+    category-games: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games.mrs"}      # Games
     ubuntu: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ubuntu.mrs"}                      # Ubuntu
     fedora: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/fedora.mrs"}                      # Fedora
     debian: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/debian.mrs"}                      # Debian
     archlinux: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/archlinux.mrs"}                # ArchLinux
-    apple@cn: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple@cn.mrs"}                  # 苹果国内
-    samsung@cn: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/samsung@cn.mrs"}              # 三星国内
-    microsoft@cn: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft@cn.mrs"}          # 微软国内
+    apple@cn: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple@cn.mrs"}                  # Appple-CN
+    samsung@cn: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/samsung@cn.mrs"}              # Samsung-CN
+    microsoft@cn: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft@cn.mrs"}          # Microsoft-CN
     geolocation-!cn: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"}    # 国外域名
     cn: {type: http, interval: 80000, behavior: domain, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}                              # 国内域名
     cn-ip: {type: http, interval: 80000, behavior: ipcidr, format: mrs, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}                             # 国内地址
