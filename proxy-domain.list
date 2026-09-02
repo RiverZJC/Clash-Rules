@@ -1,16 +1,16 @@
-# Code
-+.pytorch.org
-+.civitai.com
-+.civitai.red
-+.openmodeldb.info
+# CDN
++.cloudflare.com
++.fcix.net
 
 # Tools
 +.pling.com
 +.gnome-look.org
 
-# CDN
-+.cloudflare.com
-+.fcix.net
+# AIGC
++.pytorch.org
++.civitai.com
++.civitai.red
++.openmodeldb.info
 
 # VR
 +.deovr.com
