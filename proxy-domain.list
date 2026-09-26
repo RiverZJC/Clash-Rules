@@ -18,12 +18,15 @@
 +.vrdesktop.net
 
 # Games
++.api.steampowered.com
++.store.steampowered.com
++.community.steamstatic.com
 +.client-update.steamstatic.com
 +.modrinth.com
 +.curseforge.com
 +.nexusmods.com
-+.gamebanana.com
 +.ayakamods.com
++.gamebanana.com
 +.dawn.wine
 +.overlayed.gg
 +.overframe.gg
