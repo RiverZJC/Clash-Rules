@@ -16,11 +16,18 @@
 +.deovr.com
 +.vrdesktop.net
 
-# Games
+# Steam
 +.api.steampowered.com
++.help.steampowered.com
 +.store.steampowered.com
 +.community.steamstatic.com
++.clan.steamstatic.com
++.media.steampowered.com
++.avatars.steampowered.com
++.checkout.steampowered.com
 +.client-update.steamstatic.com
+
+# Games
 +.modrinth.com
 +.curseforge.com
 +.nexusmods.com
