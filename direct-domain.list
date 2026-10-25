@@ -4,15 +4,15 @@
 # CDN
 +.cloudflare.com
 
-# Linux
+# NET
++.test-ipv6.com
+
+# SYSTEM
 +.kde.org
 +.cachyos.org
 +.pkgbuild.com
 
-# Tools
-+.test-ipv6.com
-
-# Games
+# GAME
 +.stats.cc
 +.simpfun.cn
 +.warframe.com
