@@ -1,20 +1,24 @@
 # CDN
 +.fcix.net
 
-# Tools
-+.ntlite.com
-+.pling.com
-+.gnome-look.org
+# VR
++.deovr.com
++.vrdesktop.net
 
 # AIGC
 +.civitai.com
 +.civitai.red
 +.openmodeldb.info
-+.micuapi.ai
 
-# VR
-+.deovr.com
-+.vrdesktop.net
+# Game
++.nexusmods.com
++.ayakamods.com
++.gamebanana.com
++.modrinth.com
++.curseforge.com
++.overlayed.gg
++.overframe.gg
++.warframe.market
 
 # Steam
 +.api.steampowered.com
@@ -26,15 +30,3 @@
 +.avatars.steampowered.com
 +.checkout.steampowered.com
 +.client-update.steamstatic.com
-
-# Games
-+.modrinth.com
-+.curseforge.com
-+.nexusmods.com
-+.ayakamods.com
-+.gamebanana.com
-+.dawn.wine
-+.overlayed.gg
-+.overframe.gg
-+.warframe.market
-+.jscalc.io
