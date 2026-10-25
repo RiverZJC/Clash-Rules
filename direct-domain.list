@@ -1,6 +1,8 @@
 # NTP
 +.ntp.org
-+.time.cloudflare.com
+
+# CDN
++.cloudflare.com
 
 # Linux
 +.kde.org
