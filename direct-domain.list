@@ -3,6 +3,7 @@
 
 # CDN
 +.cloudflare.com
++.api.github.com
 
 # NET
 +.test-ipv6.com
