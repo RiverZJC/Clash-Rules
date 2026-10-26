@@ -2,8 +2,8 @@
 +.ntp.org
 
 # CDN
-+.cloudflare.com
 +.api.github.com
++.cloudflare.com
 
 # NET
 +.test-ipv6.com
