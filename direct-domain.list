@@ -1,8 +1,10 @@
 # NTP
 +.ntp.org
 
-# CDN
+# API
 +.api.github.com
+
+# CDN
 +.cloudflare.com
 
 # NET
